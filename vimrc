@@ -72,8 +72,6 @@ endfunction
 command! -n=0 ActiviteSemaine call ActiviteSemaine()
 command! -n=0 TODO call TODO()
 command! -n=0 PointSemaine :!start C:\Users\user\vimfiles\bin\pointSemaine.bat
-command! -n=0 Cmd :!start cmd
-command! -n=0 Exp :!start explorer .
 
 cd $HOME/Desktop
 
