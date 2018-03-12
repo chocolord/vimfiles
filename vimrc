@@ -10,6 +10,7 @@ Plugin 'flazz/vim-colorschemes'       "colorschemes
 Plugin 'yggdroot/indentline'          "indentations
 Plugin 'tpope/vim-surround'           "surrounding
 Plugin 'tommcdo/vim-lion'             "alignement
+Plugin 'tpope/vim-speeddating'        "manipulations de dates
 
 Plugin 'scrooloose/nerdtree'          "The NERD Tree
 Plugin 'terryma/vim-multiple-cursors' "Multiple cursors
@@ -19,9 +20,9 @@ Plugin 'digitaltoad/vim-pug'          "Pug syntax colors
 Plugin 'kchmck/vim-coffee-script'     "CoffeeScript sybtax & Cie
 Plugin 'posva/vim-vue'                "Vue files syntax colors
 
-Plugin 'vim-scripts/npm'             "NPM cli tool
+Plugin 'vim-scripts/npm'               "NPM cli tool
+Plugin 'roxma/vim-encode'              "encode strings
 
-Plugin 'file:///C:/Users/user/vimfiles/bundle/nerdtree_windows' "NERDTree-windows
 " Plugin 'marijnh/tern_for_vim' "TernJS (autocompletion JS)
 " Plugin 'lukaszkorecki/workflowish'
 
@@ -29,7 +30,7 @@ Plugin 'file:///C:/Users/user/vimfiles/bundle/nerdtree_windows' "NERDTree-window
 " Plugin 'pangloss/vim-javascript' 
 
 " Plugin 'qbbr/vim-symfony'
-" Plugin 'tpope/vim-fugitive' "git wrapper
+Plugin 'tpope/vim-fugitive' "git wrapper
 " Plugin 'KabbAmine/gulp-vim' "gulp wrapper
 
 call vundle#end()            " required
@@ -46,7 +47,7 @@ filetype plugin indent on    " required
 " }}}
 
 " Global personnal configuration --------------------------- {{{
-set ai nu ts=4 sw=4 expandtab noswapfile
+set ai nu ts=4 sw=4 expandtab noswapfile nocompatible modeline modelines=5
 syntax on
 colorscheme solarized
 
@@ -72,7 +73,8 @@ endfunction
 command! -n=0 ActiviteSemaine call ActiviteSemaine()
 command! -n=0 TODO call TODO()
 command! -n=0 PointSemaine :!start C:\Users\user\vimfiles\bin\pointSemaine.bat
+command! -n=0 NewSemaine :normal Ilundi jkYp<C-A>p2<C-A>p3<C-A>p4<C-A>
 
-cd $HOME/Desktop
+cd $HOME
 
 " }}}
