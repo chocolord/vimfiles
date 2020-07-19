@@ -2,8 +2,13 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
-call vundle#begin('$USERPROFILE/vimfiles/bundle/')
+" Linux configuration
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
+
+" Windows configuration
+" set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
+" call vundle#begin('$USERPROFILE/vimfiles/bundle/')
 
 Plugin 'VundleVim/Vundle.vim'         "Vundle
 Plugin 'flazz/vim-colorschemes'       "colorschemes
@@ -16,22 +21,18 @@ Plugin 'scrooloose/nerdtree'          "The NERD Tree
 Plugin 'terryma/vim-multiple-cursors' "Multiple cursors
 
 Plugin 'evidens/vim-twig'             "Twig syntax colors
-Plugin 'digitaltoad/vim-pug'          "Pug syntax colors
-Plugin 'kchmck/vim-coffee-script'     "CoffeeScript sybtax & Cie
 Plugin 'posva/vim-vue'                "Vue files syntax colors
 
-Plugin 'vim-scripts/npm'               "NPM cli tool
+Plugin 'ycm-core/YouCompleteMe'       " Auto completion
+Plugin 'vim-syntastic/syntastic'      " Syntax checking
+Plugin 'SirVer/ultisnips'             " Snippet engine
+Plugin 'honza/vim-snippets'           " Snippet collection 
+
 Plugin 'roxma/vim-encode'              "encode strings
 
-" Plugin 'marijnh/tern_for_vim' "TernJS (autocompletion JS)
-" Plugin 'lukaszkorecki/workflowish'
-
-" Plugin 'Valloric/YouCompleteMe'
-" Plugin 'pangloss/vim-javascript' 
-
-" Plugin 'qbbr/vim-symfony'
 Plugin 'tpope/vim-fugitive' "git wrapper
-" Plugin 'KabbAmine/gulp-vim' "gulp wrapper
+
+Plugin 'suan/vim-instant-markdown', {'rtp': 'after'}
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -49,7 +50,8 @@ filetype plugin indent on    " required
 " Global personnal configuration --------------------------- {{{
 set ai nu ts=4 sw=4 expandtab noswapfile nocompatible modeline modelines=5
 syntax on
-colorscheme solarized
+" colorscheme solarized " Gvim on Windows
+colorscheme solarized8_dark_low " vim in mate-terminal
 
 set fileencodings=utf-8
 set fileencoding=utf-8
@@ -57,24 +59,49 @@ set fileencoding=utf-8
 inoremap jk <esc>
 inoremap <c-space> <c-n>
 nnoremap <c-s> :setl hls!<CR>
+nnoremap <c-j> 20j
+nnoremap <c-k> 20k
+nnoremap nt :NERDTreeToggle<CR>
 
-function! ActiviteSemaine()
-    tabnew $home/documents/activite\ semaine.txt
-    normal G$
-    " startinsert
-endfunction
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-function! TODO()
-    tabnew $home/documents/Todo.txt
-    normal G$
-    " startinsert
-endfunction
+" Configuraiton de syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntatsic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
+let g:syntastic_javascript_eslint_args = '-c ~/.vim/eslintrc.js'
+let g:syntatsic_vue_checkers = ['eslint']
+let g:syntastic_vue_eslint_exec = 'eslint_d'
+let g:syntastic_vue_eslint_args = '-c ~/.vim/eslintrc.js'
+let g:syntastic_twig_twiglint_exec = 'twig-lint'
+let g:syntastic_twig_twiglint_exe = 'twig-lint'
 
-command! -n=0 ActiviteSemaine call ActiviteSemaine()
-command! -n=0 TODO call TODO()
-command! -n=0 PointSemaine :!start C:\Users\user\vimfiles\bin\pointSemaine.bat
-command! -n=0 NewSemaine :normal Ilundi jkYp<C-A>p2<C-A>p3<C-A>p4<C-A>
+" Configuration de UltiSnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="œœ"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
-cd $HOME
+" Configuration de vim-instant-markdown
+filetype plugin on
+"Uncomment to override defaults:
+"let g:instant_markdown_slow = 1
+"let g:instant_markdown_autostart = 0
+"let g:instant_markdown_open_to_the_world = 1
+"let g:instant_markdown_allow_unsafe_content = 1
+"let g:instant_markdown_allow_external_content = 0
+"let g:instant_markdown_mathjax = 1
+let g:instant_markdown_logfile = '/tmp/instant_markdown.log'
+"let g:instant_markdown_autoscroll = 0
+"let g:instant_markdown_port = 8888
+"let g:instant_markdown_python = 1
+let g:instant_markdown_browser = "firefox --new-tab"
 
 " }}}
