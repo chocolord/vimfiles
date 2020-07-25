@@ -48,7 +48,7 @@ filetype plugin indent on    " required
 " }}}
 
 " Global personnal configuration --------------------------- {{{
-set ai nu ts=4 sw=4 expandtab noswapfile nocompatible modeline modelines=5
+set ai nu ts=4 sw=4 expandtab noswapfile nocompatible modeline modelines=5 ruler
 syntax on
 " colorscheme solarized " Gvim on Windows
 colorscheme solarized8_dark_low " vim in mate-terminal
@@ -56,11 +56,13 @@ colorscheme solarized8_dark_low " vim in mate-terminal
 set fileencodings=utf-8
 set fileencoding=utf-8
 
+let mapleader = "-"
 inoremap jk <esc>
-inoremap <c-space> <c-n>
-nnoremap <c-s> :setl hls!<CR>
 nnoremap <c-j> 20j
 nnoremap <c-k> 20k
+inoremap <c-space> <c-n>
+nnoremap <leader>s :setl hls!<CR>
+nnoremap <leader>f zf%
 nnoremap nt :NERDTreeToggle<CR>
 
 set statusline+=%#warningmsg#

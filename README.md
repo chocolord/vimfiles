@@ -3,6 +3,15 @@ VimFiles
 
 This is my VIM configuration, it uses [Vundle](https://github.com/VundleVim/Vundle.vim) to manage plugins, NERDTree, YouCompleteMe, Syntastic, UltiSnips and other fancy plugins.
 
+## Table of contents
+
+ - [Required Tools](#required-tools)
+ - [Installation](#installaiton)
+ - [Global Settings](global-settings)
+ - [Vim Modules](#vim-modules)
+ - [Mappings](#mappings)
+ - [Links](#links)
+
 ## Required Tools
 
 To use this configration you will need to install [nodeJS](https://nodejs.org/) and [Yarn](https://yarnpkg.com/).
@@ -27,6 +36,21 @@ To use this configration you will need to install [nodeJS](https://nodejs.org/) 
 
 6) Install the node modules needed with the `install-node-modules.sh` script.
 
+## Global Settings
+
+| Setting  | Description |
+| --- |--- |
+| ai | auto indent
+| nu | line numbers |
+| sw=4 | shiftwidth set to 4 |
+| ts=4 | tabstop set to 4 |
+| et | expandtab |
+| noswapfile | disable the swap file |
+| nocompatible | Disable Vi compatibilities |
+| syntax | enables the coloration of the syntax |
+| colorscheme | sets the colors of the editor |
+| fileencoding(s) | sets the encoding of the file |
+
 ## Vim Modules
 
 | Module | description |documenttion |
@@ -49,6 +73,21 @@ To use this configration you will need to install [nodeJS](https://nodejs.org/) 
 | Vundle.vim | vim plugin manager  | https://github.com/VundleVim/Vundle.vim |
 | YouCompleteMe | autocompletion tool | https://github.com/ycm-core/YouCompleteMe |
 
+## Mappings
+
+The mappings are declared in the `vimrc` file at the line 60.
+
+**Leader key:** `-` 
+
+| Mode | Mapping | Acions | Description | 
+| --- | --- | --- |--- |
+| INSERT | `jk` | `<esc>` | quit INSERT mode easily |
+| NORMAL | `Ctrl+j` | `20j` | Scroll 20 lines down |
+| NORMAL | `Ctrl+k` | `20k` | Scroll 20 lines up |
+| INSERT | `Ctrl+<space>` | `Ctrl+n` | Browse autocompletion suggestions |
+| NORMAL | `<leader>+s` | `:set hls!<CR>` | Enable/Disable search results highlighting |
+| NORMAL | `<leader>+f` | `zf%` | Set a fold on the block (ex: fold a function) |
+| NORMAL | `nt` | `:NERDTREEToogle<CR>` | Toggle the NERDTree pannel |
 
 ## Links
   - Learn how to use Vim: [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com/)
